@@ -1,0 +1,27 @@
+class Solution:
+    def findClosestElements(self, arr: List[int], k: int, x: int) -> List[int]:
+        lengthOfArr = len(arr)
+        smallVal = arr[0]
+        largeVal = arr[lengthOfArr-1]
+        outList = list()
+        if len(arr) == k:
+            return arr
+        
+        if x <= smallVal:
+            return arr[0:k]
+                
+        elif x >= largeVal:
+            return arr[-k:]
+                
+        else:
+            n = len(arr)-k
+            low = 0
+            high = len(arr) - 1
+            while n!=0:
+                if abs(arr[low]-x)<= abs(arr[high]-x):
+                    high -=1
+                else:
+                    low +=1
+                n -=1
+            return arr[low:high+1]
+            
