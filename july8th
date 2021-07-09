@@ -1,0 +1,22 @@
+class Solution:
+    def findLength(self, nums1: List[int], nums2: List[int]) -> int:
+        count_a = len(nums1)
+        count_b = len(nums2)
+        result =0
+        
+        matrix = [[0 for k in range(count_b)] for l in range(count_a)]
+        
+        for i in range(count_a):
+            for j in range(count_b):
+                if nums1[i] == nums2[j]:
+                    if i ==0 or j==0:
+                        matrix[i][j] = 1
+                        result = max(matrix[i][j],result)
+                    else:
+                        matrix[i][j] = matrix[i-1][j-1] + 1
+                        result = max(result,matrix[i][j])
+                else:
+                    pass
+        
+        return result
+                        
