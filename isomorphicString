@@ -1,0 +1,11 @@
+class Solution:
+    def isIsomorphic(self, s: str, t: str) -> bool:
+        dict_stot = dict(zip(s,t))
+        dict_ttos = dict(zip(t,s))
+        
+        
+        
+        for i in range(len(s)):
+            if (dict_stot[s[i]] != t[i] or dict_ttos[t[i]] != s[i]):
+                return False
+        return True
